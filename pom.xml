@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.h2linlin.lab</groupId>
+    <artifactId>h2linlin-lab</artifactId>
+    <version>1.0.0</version>    <!--未来框架升级，具体项目可以选择依赖不同的平台版本版本 -->
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>h2linlin-lab-utilbox</module>
+    </modules>
+
+</project>

@@ -1,16 +1,5 @@
-package com.h2linlin.laboratory.utilbox;
+package com.h2linlin.utilbox;
 
-import java.io.ByteArrayOutputStream;
-import java.security.KeyFactory;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.Signature;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
-import javax.crypto.Cipher;
-import org.apache.commons.codec.binary.Base64;
 
 /**
  * @Desc RSA加密解密Demo
@@ -18,34 +7,34 @@ import org.apache.commons.codec.binary.Base64;
  * @Date 2019/7/16 11:35
  */
 public class TestRSA {
-
-    /**
+/*
+    *//**
      * RSA最大加密明文大小
-     */
+     *//*
     private static final int MAX_ENCRYPT_BLOCK = 117;
 
-    /**
+    *//**
      * RSA最大解密密文大小
-     */
+     *//*
     private static final int MAX_DECRYPT_BLOCK = 128;
 
-    /**
+    *//**
      * 获取密钥对
      *
      * @return 密钥对
-     */
+     *//*
     public static KeyPair getKeyPair() throws Exception {
         KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
         generator.initialize(1024);
         return generator.generateKeyPair();
     }
 
-    /**
+    *//**
      * 获取私钥
      *
      * @param privateKey 私钥字符串
      * @return
-     */
+     *//*
     public static PrivateKey getPrivateKey(String privateKey) throws Exception {
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         byte[] decodedKey = Base64.decodeBase64(privateKey.getBytes());
@@ -53,12 +42,12 @@ public class TestRSA {
         return keyFactory.generatePrivate(keySpec);
     }
 
-    /**
+    *//**
      * 获取公钥
      *
      * @param publicKey 公钥字符串
      * @return
-     */
+     *//*
     public static PublicKey getPublicKey(String publicKey) throws Exception {
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         byte[] decodedKey = Base64.decodeBase64(publicKey.getBytes());
@@ -66,13 +55,13 @@ public class TestRSA {
         return keyFactory.generatePublic(keySpec);
     }
 
-    /**
+    *//**
      * RSA加密
      *
      * @param data 待加密数据
      * @param publicKey 公钥
      * @return
-     */
+     *//*
     public static String encrypt(String data, PublicKey publicKey) throws Exception {
         Cipher cipher = Cipher.getInstance("RSA");
         cipher.init(Cipher.ENCRYPT_MODE, publicKey);
@@ -99,13 +88,13 @@ public class TestRSA {
         return new String(Base64.encodeBase64String(encryptedData));
     }
 
-    /**
+    *//**
      * RSA解密
      *
      * @param data 待解密数据
      * @param privateKey 私钥
      * @return
-     */
+     *//*
     public static String decrypt(String data, PrivateKey privateKey) throws Exception {
         Cipher cipher = Cipher.getInstance("RSA");
         cipher.init(Cipher.DECRYPT_MODE, privateKey);
@@ -132,13 +121,13 @@ public class TestRSA {
         return new String(decryptedData, "UTF-8");
     }
 
-    /**
+    *//**
      * 签名
      *
      * @param data 待签名数据
      * @param privateKey 私钥
      * @return 签名
-     */
+     *//*
     public static String sign(String data, PrivateKey privateKey) throws Exception {
         byte[] keyBytes = privateKey.getEncoded();
         PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(keyBytes);
@@ -150,14 +139,14 @@ public class TestRSA {
         return new String(Base64.encodeBase64(signature.sign()));
     }
 
-    /**
+    *//**
      * 验签
      *
      * @param srcData 原始字符串
      * @param publicKey 公钥
      * @param sign 签名
      * @return 是否验签通过
-     */
+     *//*
     public static boolean verify(String srcData, PublicKey publicKey, String sign) throws Exception {
         byte[] keyBytes = publicKey.getEncoded();
         X509EncodedKeySpec keySpec = new X509EncodedKeySpec(keyBytes);
@@ -194,5 +183,5 @@ public class TestRSA {
             e.printStackTrace();
             System.out.print("加解密异常");
         }
-    }
+    }*/
 }
