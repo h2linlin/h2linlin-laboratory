@@ -1,4 +1,4 @@
-package com.h2linlin.lab.leetcode.base;
+package com.h2linlin.dollhouse.leetcode.datastructure;
 
 /**
  * @Desc 简单队列：数组实现

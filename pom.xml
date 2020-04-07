@@ -4,14 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.h2linlin.lab</groupId>
-    <artifactId>h2linlin-lab</artifactId>
+    <groupId>com.h2linlin</groupId>
+    <artifactId>dollhouse</artifactId>
     <version>1.0.0</version>    <!--未来框架升级，具体项目可以选择依赖不同的平台版本版本 -->
 
     <packaging>pom</packaging>
 
     <modules>
-        <module>h2linlin-lab-utilbox</module>
+        <module>utilbox</module>
+        <module>leetcode</module>
     </modules>
 
 </project>
