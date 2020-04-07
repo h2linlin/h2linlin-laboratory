@@ -1,4 +1,4 @@
-package com.h2linlin.algorithms;
+package com.h2linlin.dollhouse.utilbox.algorithms;
 
 import java.util.Iterator;
 import java.util.Stack;
