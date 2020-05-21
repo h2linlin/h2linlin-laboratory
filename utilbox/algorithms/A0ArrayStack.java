@@ -1,7 +1,6 @@
-package com.h2linlin.dollhouse.utilbox.algorithms;
+package algorithms;
 
 import java.util.Iterator;
-import java.util.Stack;
 
 /**
  * @Desc 用数组的方式实现栈

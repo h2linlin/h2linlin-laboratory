@@ -7,12 +7,4 @@
     <groupId>com.h2linlin</groupId>
     <artifactId>dollhouse</artifactId>
     <version>1.0.0</version>    <!--未来框架升级，具体项目可以选择依赖不同的平台版本版本 -->
-
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>utilbox</module>
-        <module>leetcode</module>
-    </modules>
-
 </project>

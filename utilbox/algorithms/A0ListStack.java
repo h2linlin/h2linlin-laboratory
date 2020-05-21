@@ -1,4 +1,4 @@
-package com.h2linlin.dollhouse.utilbox.algorithms;
+package algorithms;
 
 /**
  * @Desc 链表方式实现栈
