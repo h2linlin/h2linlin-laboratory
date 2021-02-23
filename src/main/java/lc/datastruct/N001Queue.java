@@ -1,4 +1,4 @@
-package lc;
+package lc.datastruct;
 
 /**
  * @Desc 简单队列：数组实现

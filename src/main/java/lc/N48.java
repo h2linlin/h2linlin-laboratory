@@ -1,7 +1,7 @@
 package lc;
 
 /**
- * 面试题01.07 旋转矩阵
+ * N48 旋转矩阵
  *
  * 给你一幅由 N × N 矩阵表示的图像，其中每个像素的大小为 4 字节。请你设计一种算法，将图像旋转 90 度。
  *
@@ -41,23 +41,28 @@ package lc;
  * ]
  *
  * 题解：
- * 方法一、水平翻转，再对角线翻转
- * 方法二、相当于是坐标系翻转，找变化前后坐标对应的变化规律即可。
+ * 方法一、由外到内一圈一圈转。每转一次时，就是将4份边长-1的元素，逐个交换即可。
+ * 方法二、水平翻转，再对角线翻转。
+ *
+ * 重要提醒：二维数组就是一个行列式。mx[x][y]，x代表行数，y代表列数。以此构成一个坐标系，垂直方向是x轴，水平方向是y轴。
  *
  */
-public class MS0107 {
+public class N48 {
 
     public static void main(String[] args) {
+        // 输入
         int[][] matrix = {{1, 2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13, 14, 15}, {16, 17, 18, 19, 20}, {21, 22, 23, 24, 25}};
         display(matrix);
 
-        int[][] result = rotate2(matrix);
+        // 计算
+        int[][] result = rotate3(matrix);
 
+        // 输出
         System.out.println();
-
         display(result);
     }
 
+    // 解法1：暴力法，由外向内，每层旋转。
     private static int[][] rotate(int[][] matrix) {
         // 一圈一圈移动
 
@@ -81,10 +86,11 @@ public class MS0107 {
         return matrix;
     }
 
+    // 解法1：按 左上-右下 对角线翻转，再按垂直中心线翻转
     private static int[][] rotate2(int[][] matrix) {
-        int a;
+        /*int a;
         int n=matrix.length;
-        for (int i = 0; i <n/2 ; i++) {
+        for (int i = 0; i < n/2 ; i++) {
             for (int j = i; j <n-i-1; j++) {
                 a=matrix[i][j];
                 matrix[i][j]=matrix[n-j-1][i];
@@ -92,8 +98,31 @@ public class MS0107 {
                 matrix[n-i-1][n-j-1]=matrix[j][n-i-1];
                 matrix[j][n-i-1]=a;
             }
-        }
+        }*/
         return matrix;
+    }
+
+    // 解法2：按 左上-右下 对角线翻转，再按垂直中心线翻转
+    private static int[][] rotate3(int[][] mx) {
+        // 按对角线翻转
+        for (int x = 0; x < mx.length; x++) {
+            for (int y = 0; y < x; y++) {
+                int temp = mx[x][y];
+                mx[x][y] = mx[y][x];
+                mx[y][x] = temp;
+            }
+        }
+
+        // 垂直翻转，即按过y轴中点的x轴平行线翻转。
+        for (int x = 0; x < mx.length; x++) {
+            for (int y = 0; y < mx.length/2; y++) {
+                int temp = mx[x][y];
+                mx[x][y] = mx[x][mx.length - y - 1];
+                mx[x][mx.length - y - 1] = temp;
+            }
+        }
+
+        return mx;
     }
 
     // 显示
