@@ -1,4 +1,4 @@
-package RSA;
+package utilbox.RSA;
 
 import java.io.*;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package algorithms;
+package lc.algorithms;
 
 /**
  * @Desc 链表方式实现栈

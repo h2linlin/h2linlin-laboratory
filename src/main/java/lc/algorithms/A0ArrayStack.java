@@ -1,4 +1,4 @@
-package algorithms;
+package lc.algorithms;
 
 import java.util.Iterator;
 

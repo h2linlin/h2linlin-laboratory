@@ -1,4 +1,4 @@
-package algorithms;
+package lc.algorithms;
 
 /**
  * @Desc 数据结构：栈的接口
