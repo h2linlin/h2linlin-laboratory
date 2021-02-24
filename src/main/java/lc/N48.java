@@ -48,20 +48,6 @@ package lc;
  *
  */
 public class N48 {
-
-    public static void main(String[] args) {
-        // 输入
-        int[][] matrix = {{1, 2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13, 14, 15}, {16, 17, 18, 19, 20}, {21, 22, 23, 24, 25}};
-        display(matrix);
-
-        // 计算
-        int[][] result = rotate3(matrix);
-
-        // 输出
-        System.out.println();
-        display(result);
-    }
-
     // 解法1：暴力法，由外向内，每层旋转。
     private static int[][] rotate(int[][] matrix) {
         // 一圈一圈移动
@@ -123,6 +109,19 @@ public class N48 {
         }
 
         return mx;
+    }
+
+    public static void main(String[] args) {
+        // 输入
+        int[][] matrix = {{1, 2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13, 14, 15}, {16, 17, 18, 19, 20}, {21, 22, 23, 24, 25}};
+        display(matrix);
+
+        // 计算
+        int[][] result = rotate3(matrix);
+
+        // 输出
+        System.out.println();
+        display(result);
     }
 
     // 显示
