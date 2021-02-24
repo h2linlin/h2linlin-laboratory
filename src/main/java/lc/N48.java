@@ -88,17 +88,17 @@ public class N48 {
 
     // 解法1：按 左上-右下 对角线翻转，再按垂直中心线翻转
     private static int[][] rotate2(int[][] matrix) {
-        /*int a;
-        int n=matrix.length;
-        for (int i = 0; i < n/2 ; i++) {
-            for (int j = i; j <n-i-1; j++) {
-                a=matrix[i][j];
-                matrix[i][j]=matrix[n-j-1][i];
-                matrix[n-j-1][i]=matrix[n-i-1][n-j-1];
-                matrix[n-i-1][n-j-1]=matrix[j][n-i-1];
-                matrix[j][n-i-1]=a;
-            }
-        }*/
+//        int a;
+//        int n=matrix.length;
+//        for (int i = 0; i < n/2 ; i++) {
+//            for (int j = i; j <n-i-1; j++) {
+//                a=matrix[i][j];
+//                matrix[i][j]=matrix[n-j-1][i];
+//                matrix[n-j-1][i]=matrix[n-i-1][n-j-1];
+//                matrix[n-i-1][n-j-1]=matrix[j][n-i-1];
+//                matrix[j][n-i-1]=a;
+//            }
+//        }
         return matrix;
     }
 
