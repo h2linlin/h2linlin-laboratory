@@ -1,4 +1,4 @@
-package lc;
+package lc.datastruct.array;
 
 /**
  * @Desc
@@ -30,7 +30,7 @@ package lc;
  * @Author zh wu
  * @Date 2020/5/22
  */
-public class N498DiagonalTraverse {
+public class N0498DiagonalTraverse {
     // 解法1：暴力法。直接遍历，共有5种情况：碰到上、下、左、右边，以及正常遍历。
     // 难点是边界的判定，考虑数组是1维数组的情况。
     public static int[] findDiagonalOrder(int[][] mx) {

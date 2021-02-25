@@ -1,4 +1,4 @@
-package lc;
+package lc.datastruct.array;
 
 /**
  * N48 旋转矩阵
@@ -47,7 +47,7 @@ package lc;
  * 重要提醒：二维数组就是一个行列式。mx[x][y]，x代表行数，y代表列数。以此构成一个坐标系，垂直方向是x轴，水平方向是y轴。
  *
  */
-public class N48 {
+public class N0048 {
     // 解法1：暴力法，由外向内，每层旋转。
     private static int[][] rotate(int[][] matrix) {
         // 一圈一圈移动
