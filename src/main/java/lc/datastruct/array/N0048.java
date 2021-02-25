@@ -49,44 +49,28 @@ package lc.datastruct.array;
  */
 public class N0048 {
     // 解法1：暴力法，由外向内，每层旋转。
-    private static int[][] rotate(int[][] matrix) {
-        // 一圈一圈移动
-
-        // 用于临时存放
-        int temp;
-        // 需要转圈的层数。总长度为奇数的层数等效于总长度小于1的偶数层数。
-        int level = matrix.length / 2;
-
-
-        // 一圈一圈转，每次转圈的起始位置为matrix[i][i]
-        for (int i = 0; i < level; i++) {
-            // 每增加一层，步长少二。初始步长为总长度- 1
-            // 所以：转圈的步长 = 总长度- 1 - 当前层数序号*2
-            int step = matrix.length - 1 - i * 2;
-            temp = matrix[i][i];
-            for (int j = 0; j < step; j++) {
-
-            }
-        }
-
-        return matrix;
-    }
-
-    // 解法1：按 左上-右下 对角线翻转，再按垂直中心线翻转
-    private static int[][] rotate2(int[][] matrix) {
-//        int a;
-//        int n=matrix.length;
-//        for (int i = 0; i < n/2 ; i++) {
-//            for (int j = i; j <n-i-1; j++) {
-//                a=matrix[i][j];
-//                matrix[i][j]=matrix[n-j-1][i];
-//                matrix[n-j-1][i]=matrix[n-i-1][n-j-1];
-//                matrix[n-i-1][n-j-1]=matrix[j][n-i-1];
-//                matrix[j][n-i-1]=a;
+//    private static int[][] rotate(int[][] matrix) {
+//        // 一圈一圈移动
+//
+//        // 用于临时存放
+//        int temp;
+//        // 需要转圈的层数。总长度为奇数的层数等效于总长度小于1的偶数层数。
+//        int level = matrix.length / 2;
+//
+//
+//        // 一圈一圈转，每次转圈的起始位置为matrix[i][i]
+//        for (int i = 0; i < level; i++) {
+//            // 每增加一层，步长少二。初始步长为总长度- 1
+//            // 所以：转圈的步长 = 总长度- 1 - 当前层数序号*2
+//            int step = matrix.length - 1 - i * 2;
+//            temp = matrix[i][i];
+//            for (int j = 0; j < step; j++) {
+//
 //            }
 //        }
-        return matrix;
-    }
+//
+//        return matrix;
+//    }
 
     // 解法2：按 左上-右下 对角线翻转，再按垂直中心线翻转
     private static int[][] rotate3(int[][] mx) {
