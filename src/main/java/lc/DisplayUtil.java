@@ -22,6 +22,14 @@ public class DisplayUtil {
 		System.out.println();
 	}
 
+	// 打印一维数组
+	public static void display(Object[] matrix) {
+		for (int i = 0; i < matrix.length; i++) {
+			System.out.print(matrix[i] + "\t");
+		}
+		System.out.println();
+	}
+
 	// 打印二维数组
 	public static void display(int[][] matrix) {
 		for (int i = 0; i < matrix.length; i++) {
