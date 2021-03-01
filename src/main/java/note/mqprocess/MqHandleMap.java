@@ -28,7 +28,7 @@ public class MqHandleMap {
 //    // map初始化，根据注解标注的信息，初始化handleMap
 //    private void init() {
 //        // 1.获取所有含有@DcMqProcessController注解的类
-//        Reflections reflections = new Reflections("com.szatc.dman.service.biz.runway.controller.mq");
+//        Reflections reflections = new Reflections("com.xxx.xxx.service.biz.xxx.controller.mq");
 //        Set<Class<?>> classSet = reflections.getTypesAnnotatedWith(DcMqProcessController.class);
 //
 //        // 2.获取类中所有含有@DcMqProcessMethod注解的方法，并生成处理器，存入map

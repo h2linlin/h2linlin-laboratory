@@ -21,7 +21,7 @@ public class MqConsumer {
 //    private MqHandleMap mqHandleMap;
 //
 //    // 根据消息类型，将消息分发至各个对应的controller处理
-//    @RabbitListener(queues = "sz.dc.dman")
+//    @RabbitListener(queues = "xx.dc.cccc")
 //    public void process(String jsonStrMsg) {
 //        String resultCode = "失败";
 //        final StopWatch sw = new StopWatch();

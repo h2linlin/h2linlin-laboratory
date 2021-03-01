@@ -22,8 +22,6 @@ public class Solution {
     }
 
     private static void solve() {
-        System.out.println("adsb".equals("adsb") && !("ZGSZ".equals("aZGSZ")));
-        System.out.println("adsb".equals("adsb") && !"ZGSZ".equals("ZaGSZ"));
 //        System.out.println(takeAliveTime("2021-01-29T07:34:50.9921875"));// 2021-01-29T02:22:40.203125
     }
 
