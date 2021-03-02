@@ -113,7 +113,7 @@ public class N0014 {
 	// 获取公共子串
 	private String getCommonStr(String str1, String str2) {
 		int index = 0;
-		int len = Math.max(str1.length(), str2.length());
+		int len = Math.min(str1.length(), str2.length());
 
 		for (int j = 0; j < len; j++) {
 			if (str1.charAt(j) != str2.charAt(j)) {
@@ -126,6 +126,40 @@ public class N0014 {
 	}
 
 	// 解法3：分治法
+	public static String solution3(String[] strs) {
+		if (strs == null || strs.length == 0) {
+			return "";
+		}
+		return devide(strs, 0, strs.length - 1);
+	}
+
+	// devide
+	public static String devide(String[] strs, int start, int end) {
+		int mid = strs.length / 2;
+
+		if (start == mid) {
+
+		}
+
+		String left = devide(strs, start, mid);
+		String right = devide(strs, mid + 1, end);
+		return conquer(left, right);
+	}
+
+	// conquer
+	public static String conquer(String str1, String str2) {
+		int index = 0;
+		int len = Math.min(str1.length(), str2.length());
+
+		for (int j = 0; j < len; j++) {
+			if (str1.charAt(j) != str2.charAt(j)) {
+				break;
+			}
+			index ++;
+		}
+
+		return str1.substring(0, index);
+	}
 
 	// 解法4：二分查找
 
