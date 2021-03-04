@@ -3,6 +3,7 @@ package lc.datastruct.strings;
 import lc.DisplayUtil;
 
 import javax.management.MXBean;
+import java.util.Arrays;
 
 /**
  * @Author: h2linlin
@@ -34,12 +35,11 @@ import javax.management.MXBean;
 public class N0014 {
 	public static void main(String[] args) {
 		// 输入
-		String[] in = {"cir","car"};
-		int target = 4;
+		String[] in = {"f","flow","f"};
 		DisplayUtil.display(in);
 
 		// 计算
-		String out = solution2(in);
+		String out = solution4(in);
 
 		// 输出
 		DisplayUtil.display(out);
@@ -135,10 +135,10 @@ public class N0014 {
 
 	// devide
 	public static String devide(String[] strs, int start, int end) {
-		int mid = strs.length / 2;
+		int mid = (end - start) / 2 + start;
 
-		if (start == mid) {
-
+		if (start == end) {
+			return strs[start];
 		}
 
 		String left = devide(strs, start, mid);
@@ -162,6 +162,86 @@ public class N0014 {
 	}
 
 	// 解法4：二分查找
+	public static String solution4(String[] strs) {
+		if (strs == null || strs.length == 0
+			|| strs[0] == null || strs[0].length() == 0) {
+			return "";
+		}
+
+		// 获取前缀最小长度
+		int minWordLen = Arrays.stream(strs)
+				.min((s1, s2) -> { return s1.length() < s2.length() ? -1 : 1;})
+				.get()
+				.length();
+
+		int wdStart = 0;
+		int wdEnd = minWordLen;
+
+		while(wdStart < wdEnd) {
+			int mid = wdStart + (wdEnd - wdStart + 1) / 2;
+
+			if (isPattern(strs, mid)) {
+				wdStart = mid;
+			} else {
+				wdEnd = mid - 1;
+			}
+		}
+
+		return strs[0].substring(0, wdStart);
+	}
+
+	// 是否所有单词都匹配给定序列
+	public static boolean isPattern(String[] strs, int index) {
+		for (int i = 0; i < strs.length; i++) {
+			for (int j = 0 ; j < index; j++) {
+				if (strs[0].charAt(j) != strs[i].charAt(j)) {
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+//		if (strs == null || strs.length == 0) {
+//			return "";
+//		}
+//
+//		// 获取前缀最小长度
+//		int minWordLen = Arrays.stream(strs)
+//				.min((s1, s2) -> { return s1.length() < s2.length() ? -1 : 0;})
+//				.get()
+//				.length();
+//
+//		int wdStart = 0;
+//		int wdEnd = minWordLen;
+//
+//		while(wdStart < wdEnd) {
+//			int mid = wdStart + (wdEnd - wdStart + 1) / 2;
+//
+//			if (isPattern(strs, mid)) {
+//				wdStart = mid;
+//			} else {
+//				wdEnd = mid - 1;
+//			}
+//		}
+//
+//		return strs[0].substring(0, wdStart);
+//	}
+//
+//	// 是否所有单词都匹配给定序列
+//	public static boolean isPattern(String[] strs, int index) {
+//		for (int i = 1; i < strs.length; i++) {
+//			for (int j = 0 ; j < index; j++) {
+//				if (strs[0].charAt(j) != strs[i].charAt(j)) {
+//					return false;
+//				}
+//			}
+//		}
+//
+//		return true;
+//	}
 
 	// 解法5：先把所有字符串各自排序，然后比较头尾即可。。。
+
+	// 解法6：取第一个单词作为前缀，然后往后面走，不匹配就 最后一位--。
 }

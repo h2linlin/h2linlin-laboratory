@@ -5,39 +5,45 @@
  */
 public class Temp {
     public static void main(String[] args) {
-        System.out.println("123456".substring(0, 0));
+        longestCommonPrefix(new String[]{"dog", "","car"});
     }
 
-    class Solution {
-        public String longestCommonPrefix(String[] strs) {
+        public static String longestCommonPrefix(String[] strs) {
             if (strs == null || strs.length == 0) {
                 return "";
-            } else {
-                return longestCommonPrefix(strs, 0, strs.length - 1);
             }
-        }
+            int minLength = Integer.MAX_VALUE;
 
-        public String longestCommonPrefix(String[] strs, int start, int end) {
-            if (start == end) {
-                return strs[start];
-            } else {
-                int mid = (end - start) / 2 + start;
-                String lcpLeft = longestCommonPrefix(strs, start, mid);
-                String lcpRight = longestCommonPrefix(strs, mid + 1, end);
-                return commonPrefix(lcpLeft, lcpRight);
+            for (String str : strs) {
+                minLength = Math.min(minLength, str.length());
             }
-        }
-
-        public String commonPrefix(String lcpLeft, String lcpRight) {
-            int minLength = Math.min(lcpLeft.length(), lcpRight.length());
-            for (int i = 0; i < minLength; i++) {
-                if (lcpLeft.charAt(i) != lcpRight.charAt(i)) {
-                    return lcpLeft.substring(0, i);
+            int low = 0, high = minLength;
+            while (low < high) {
+                int mid = (high - low + 1) / 2 + low;
+                if (isCommonPrefix(strs, mid)) {
+                    low = mid;
+                } else {
+                    high = mid - 1;
                 }
             }
-            return lcpLeft.substring(0, minLength);
+
+
+            return strs[0].substring(0, low);
         }
-    }
+
+        public static boolean isCommonPrefix(String[] strs, int length) {
+            String str0 = strs[0].substring(0, length);
+            int count = strs.length;
+            for (int i = 1; i < count; i++) {
+                String str = strs[i];
+                for (int j = 0; j < length; j++) {
+                    if (str0.charAt(j) != str.charAt(j)) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
 }
 
 
