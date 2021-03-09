@@ -31,10 +31,9 @@ import lc.DisplayUtil;
  * 1 <= s.length <= 1000
  * s 仅由数字和英文字母（大写和/或小写）组成
  *
- * 方法一（暴力解法）：
- * 方法二（中心扩散）：
- * 方法三（动态规划）：
- * 方法四（Manacher 算法）：
+ * 方法一（暴力解法：中心扩散）：
+ * 方法二（动态规划）：
+ * 方法三（Manacher 算法）：
  *
  */
 public class N0005 {
@@ -50,11 +49,48 @@ public class N0005 {
 		DisplayUtil.display(out);
 	}
 
-	// 解法1：暴力法
+	// 解法1：暴力法（中心扩散）
+	// 列举所有的回文中心，逐一验证。验证方法：逐一进行中心扩散。
 	public static String solution1(String s) {
+		// 1.边界判断
+		if (s == null || "".equals(s) || s.length() == 1) {
+			return s;
+		}
 
-		return null;
+		// 2.中心扩展
+
+		// 2.1 最大回文串起点和终点
+		int start = 0;
+		int end = 0;
+
+		for (int i = 0; i < s.length(); i++) {
+			// 回文串为奇数的情况
+			int len1 = disperse(s, i, i);
+			// 回文串为偶数的情况
+			int len2 = disperse(s, i, i+1);
+
+			int len = Math.max(len1, len2);
+			// 计算回文串在总的字符串中的位置，并进行更新
+			if (end - start + 1 < len) {
+				start = i - (len - 1)/ 2;
+				end = i + len / 2;
+			}
+		}
+
+		return s.substring(start, end + 1);
 	}
 
+
+	// s：字符串
+	// left：中心点第一个回文对的左侧坐标
+	// right：中心点第一个回文对的右侧坐标
+	// 返回：中心点最大回文字符串长度
+	private static int disperse(String s, int left, int right) {
+		while((left >= 0) && (right < s.length()) && (s.charAt(left) == s.charAt(right))) {
+			left --;
+			right ++;
+		}
+		return right - left - 1;
+	}
 
 }
