@@ -2,6 +2,10 @@ package lc.datastruct.strings;
 
 import lc.DisplayUtil;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * @Author: h2linlin
  *
@@ -52,11 +56,11 @@ import lc.DisplayUtil;
 public class N0151 {
 	public static void main(String[] args) {
 		// 输入
-		String in = "fhjhjjhjjjf";
+		String in = "  leetcode is fun  ";
 		DisplayUtil.display(in);
 
 		// 计算
-		String out = solution1(in);
+		String out = solution3(in);
 
 		// 输出
 		DisplayUtil.display(out);
@@ -64,15 +68,30 @@ public class N0151 {
 
 	// 解法1：使用队列
 	public static String solution1(String s) {
+
+
 		return null;
 	}
 
 	// 解法2：原地解法
 	// 从两侧向中间，逐一替换
 	public static String solution2(String s) {
+		 
+
 		return null;
 	}
 
 	// 解法3：语言特性
 	// split, reverse, join
+	public static String solution3(String s) {
+		// 去除前后空格
+		s = s.trim();
+
+		// 全部翻转
+		List<String> strs = Arrays.asList(s.split("\\s+"));
+		Collections.reverse(strs);
+
+		// 组装最终结果
+		return String.join(" ", strs);
+	}
 }
