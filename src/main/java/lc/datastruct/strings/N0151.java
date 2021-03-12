@@ -76,7 +76,7 @@ public class N0151 {
 	// 解法2：原地解法
 	// 从两侧向中间，逐一替换
 	public static String solution2(String s) {
-		 
+
 
 		return null;
 	}
