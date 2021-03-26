@@ -2,9 +2,7 @@ package lc.datastruct.strings;
 
 import lc.DisplayUtil;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Author: h2linlin
@@ -60,23 +58,42 @@ public class N0151 {
 		DisplayUtil.display(in);
 
 		// 计算
-		String out = solution3(in);
+		String out = solution1(in);
 
 		// 输出
 		DisplayUtil.display(out);
 	}
 
-	// 解法1：使用队列
+	// 解法1：使用栈
 	public static String solution1(String s) {
+		Stack<String> stack = new Stack<>();
 
+		s = s.trim();
 
-		return null;
+		List<String> strs = Arrays.asList(s.split("\\s+"));
+		strs.forEach(
+				w -> {
+					stack.push(w);
+				}
+		);
+
+		StringBuffer sb = new StringBuffer(stack.pop());
+		while (!stack.empty()) {
+			sb.append(" " + stack.pop());
+		}
+
+		return sb.toString();
 	}
 
-	// 解法2：原地解法
-	// 从两侧向中间，逐一替换
-	public static String solution2(String s) {
 
+	// 解法2：原地解法
+	// 加一个最大单词长度的空间暂存队尾单词，然后依次把队尾单词插入标记的插入位置即可。
+	public static String solution2(String s) {
+		// 预处理：将两侧空格干掉，单词中间的空格只留1个。
+
+		// 统计最大的单词长度
+
+		// 从后往前，依次插入单词
 
 		return null;
 	}
