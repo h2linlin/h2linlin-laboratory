@@ -36,7 +36,7 @@ public class N0035 {
 		DisplayUtil.display("target: " + target);
 
 		// 计算
-		int out = solution1(in, target);
+		int out = solution3(in, target);
 
 		// 输出
 		DisplayUtil.display(out);
@@ -45,52 +45,91 @@ public class N0035 {
 	// 解法1：暴力法
 	private static int solution1(int[] nums, int target) {
 		for (int i = 0; i < nums.length; i++) {
+			// 处理四种情况：
+			// 	1.在数组最前面
+			//  2.在数组某个位置
+			//  3.在数组中间
+
 			if (target <= nums[i]) {
 				return i;
 			}
 		}
 
-		// 边界判断：最后一位
+		// 4.在数组最后面
 		return nums.length;
 	}
 
-	// 解法2：二分查找
-//	private static int solution2(int[] nums, int target) {
-//		int left = 0;
-//		int right = nums.length;
-//
-//		while (left < right) {
-//			int mid = left + right / 2;
-//
-//			if (target < nums[mid] ) {
-//				right = mid;
-//			} else {
-//				left = mid;
-//			}
-//		}
-//
-//		if (target < nums[left]) {
-//			return left;
-//		}
-//
-//		return nums.length;
-//	}
+	// 解法2：二分查找，写法一
+	private static int solution2(int[] nums, int target) {
+		int n = nums.length;
+		int left = 0;
+		int right = n;	// 假设target值在[left, right)里
 
-//	int left = 0, right = numsSize;
-//
-//	while (left < right)
-//	{
-//		int mid = left + (right - left) / 2;
-//
-//		if (nums[mid] >= target)
-//		{
-//			right = mid;
-//		}
-//		else
-//		{
-//			left = mid + 1;
-//		}
-//	}
-//
-//	return left;
+		while (left < right) {
+			int middle = left + (right - left) / 2;	// 防止溢出
+
+			if(target < nums[middle]) {
+				right = middle;
+			} else if (target > nums[middle]) {
+				left = middle + 1;
+			} else {
+				return middle;
+			}
+		}
+
+		// 分别处理如下四种情况
+		// 目标值在数组所有元素之前 [0,0)
+		// 目标值等于数组中某一个元素 return middle
+		// 目标值插入数组中的位置 [left, right) ，return right 即可
+		// 目标值在数组所有元素之后的情况 [left, right)，return right 即可
+		return right;
+	}
+
+	// 解法2：二分查找，写法二
+	private static int solution3(int[] nums, int target) {
+		int n = nums.length;
+		int left = 0;
+		int right = n - 1;
+
+		while (left <= right) {
+			int middle = left + ((right - left) >> 1);	// 防止溢出
+
+			if (target < nums[middle]) {
+				right = middle - 1;
+			} else if (target > nums[middle]) {
+				left = middle + 1;
+			} else {
+				return middle;
+			}
+		}
+
+		return left;
+	}
+
+	// 解法3：二分查找，写法三
+	private static int solution4(int[] nums, int target) {
+		int n = nums.length;
+		int left = 0;
+		int right = n - 1;
+
+		while (left <= right) {
+			int middle = left + ((right - left) >> 1);	// 防止溢出
+
+			if (target > nums[middle]) {
+				left = middle + 1;
+			} else if (target < nums[middle]) {
+				right = middle - 1;
+			} else {
+				return middle;
+			}
+		}
+
+		// 分别处理如下四种情况
+		// 目标值在数组所有元素之前  [0, -1]
+		// 目标值等于数组中某一个元素  return middle;
+		// 目标值插入数组中的位置 [left, right]，return  right + 1
+		// 目标值在数组所有元素之后的情况 [left, right]， return right + 1
+
+		return right + 1;	// return left也行
+	}
 }
