@@ -13,6 +13,10 @@ public class ListNode {
         this.val = val;
     }
 
+    ListNode(ListNode next) {
+        this.next = next;
+    }
+
     ListNode(int val, ListNode next) {
         this.val = val;
         this.next = next;

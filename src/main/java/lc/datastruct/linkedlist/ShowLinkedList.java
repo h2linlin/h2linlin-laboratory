@@ -19,6 +19,11 @@ public class ShowLinkedList {
     }
 
     public static void show(ListNode headNode) {
+        if (headNode == null) {
+            System.out.println("null");
+            return;
+        }
+
         System.out.print(headNode.val + ", ");
         if (headNode.next != null) {
             show(headNode.next);
