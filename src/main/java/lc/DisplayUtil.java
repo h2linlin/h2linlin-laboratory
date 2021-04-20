@@ -16,6 +16,16 @@ public class DisplayUtil {
 
 	// 打印一维数组
 	public static void display(int[] matrix) {
+		if (matrix == null) {
+			System.out.println("null");
+			return;
+		}
+
+		if (matrix.length == 0) {
+			System.out.println("[]");
+			return;
+		}
+
 		for (int i = 0; i < matrix.length; i++) {
 			System.out.print(matrix[i] + "\t");
 		}

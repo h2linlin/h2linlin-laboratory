@@ -5,7 +5,7 @@ package lc.datastruct.linkedlist;
  * @Author wuzh
  * @Date 2021/4/19
  */
-public class N206 {
+public class N0206 {
     public static void main(String[] args) {
         // 输入
         ListNode headNode = ShowLinkedList.createLinkedList(new int[]{1,1,2,2,1,6});
