@@ -54,11 +54,11 @@ import java.util.*;
 public class N0151 {
 	public static void main(String[] args) {
 		// 输入
-		String in = "  leetcode is fun  ";
+		String in = "the sky is blue";
 		DisplayUtil.display(in);
 
 		// 计算
-		String out = solution1(in);
+		String out = solution2(in);
 
 		// 输出
 		DisplayUtil.display(out);
@@ -87,15 +87,76 @@ public class N0151 {
 
 
 	// 解法2：原地解法
-	// 加一个最大单词长度的空间暂存队尾单词，然后依次把队尾单词插入标记的插入位置即可。
+	// 1.双指针去除多余空格
+	// 2.双指针翻转所有字符串
+	// 3.双指针翻转每个单词
 	public static String solution2(String s) {
-		// 预处理：将两侧空格干掉，单词中间的空格只留1个。
+		char[] chars = s.toCharArray();
+		// 1.双指针去除空格
+		// 去除头尾空格
+		int head = 0;
+		while (chars[head] == ' ') {
+			head ++;
+		}
+		int tail = chars.length - 1;
+		while (chars[tail] == ' ') {
+			tail --;
+		}
 
-		// 统计最大的单词长度
+		// 去除中间空格
+		int p1 = head;
+		int p2 = head + 1;
+		while (p2 <= tail) {
+			if (chars[p2 -1] == ' ' && chars[p2] == ' ') {
+				p2 ++;
+				continue;
+			}
+			chars[p1 + 1] = chars[p2];
+			p1 ++;
+			p2 ++;
+		}
 
-		// 从后往前，依次插入单词
+		tail = p1;
 
-		return null;
+		// 2.双指针翻转整个字符串
+		chars = reverse(chars, head, tail);
+
+		// 3.双指针翻转每个单词
+		p1 = head;
+		p2 = head;
+
+		for (int i = head; i <= tail;) {
+			int add = 0;
+			while (i + add <= tail && chars[i + add] != ' ') {
+				add ++;
+			}
+
+			if (i + add != tail) {
+				reverse(chars, i, i + add - 1);
+				i += add + 1;
+			} else {
+				reverse(chars, i, tail);
+				i = tail + 1;
+			}
+		}
+
+		return new String(chars, head, tail - head + 1);
+	}
+
+	// 翻转下标begin到end字符
+	static char[] reverse(char[] chars, int begin, int end) {
+		int p1 = begin;
+		int p2 = end;
+
+		while (p1 < p2) {
+			chars[p1] ^= chars[p2];
+			chars[p2] ^= chars[p1];
+			chars[p1] ^= chars[p2];
+
+			p1 ++;
+			p2 --;
+		}
+		return chars;
 	}
 
 	// 解法3：语言特性
