@@ -18,3 +18,10 @@ continue不要老是忘。
 双指针：降低时间复杂度的神器，能降低一个N^2。
 
 三次翻转：字符串处理时比较好用的技巧。要经常学会倒着思考。
+
+StringBuffer和StringBuilder区别：
+- StringBuffer：速度慢，线程安全
+- StringBuilder：速度快，线程不安全
+
+新建字符串，注意最后一个参数是长度，而不是结束标记位
+String s = new String(char[] chars, int startIndex, int length);
