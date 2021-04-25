@@ -1,5 +1,5 @@
 栈与队列
-
+### Deque
 Deque（double ended queue双端队列）有三种用途：
 - 普通队列(一端进另一端出):
 `Queue queue = new LinkedList()或Deque deque = new LinkedList()`
@@ -32,3 +32,26 @@ peek：偷看
 **作为栈使用**：push()、pop()、peek()。
 
 char类型的比较：可以直接用 == 比较，包装类也一样。注意用单引号：if (st.peek() == 'a') {}
+
+### 单调栈/队列
+使用实例：
+pop时：等于最大的才弹出
+push时：队尾小于自己就把它pop掉，最后自己再push
+
+### PriorityQueue
+优先级队列：披着队列外衣的堆。
+实现了队列接口：
+- peek()：返回队首元素
+- poll()：返回队首元素，队首元素出队列
+- add()：添加元素
+- size()：返回队列元素个数
+- isEmpty()：判断队列是否为空，为空返回true,不空返回false
+
+默认是小顶堆，底层是完全二叉树，不允许放入null元素。
+
+如果需要改变排序方向，自己从构造方法传入Comparator<? super E> comparator:
+
+int compare(T o1, T o2);方法，**默认升序排列，小顶堆，return o1 - o2。若要相反，则调换o1/o2顺序**：
+- 负数：o1 比 o2 小。
+- 0：o1 等于 o2。
+- 正数：o1 比 o2 大。
