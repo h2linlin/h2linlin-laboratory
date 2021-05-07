@@ -55,3 +55,14 @@ int compare(T o1, T o2);方法，**默认升序排列，小顶堆，return o1 - 
 - 负数：o1 比 o2 小。
 - 0：o1 等于 o2。
 - 正数：o1 比 o2 大。
+
+```java
+// queue可以存空元素
+        Deque<TreeNode> que = new LinkedList<>();
+        System.out.println(que.size());     // 0
+        System.out.println(que.isEmpty());  // true
+
+        que.push(null);
+        System.out.println(que.size());     // 1
+        System.out.println(que.isEmpty());  // false
+```
