@@ -61,5 +61,5 @@ public class N0429 {
             val = _val;
             children = _children;
         }
-    };
+    }
 }

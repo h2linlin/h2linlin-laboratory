@@ -11,17 +11,6 @@ import java.util.PriorityQueue;
  * @Author h2linlin
  */
 public class N0347 {
-    public static void main(String[] args) {
-        int[] nums = new int[]{1,1,1,2,2,3};
-        int k = 2;
-        DisplayUtil.display(nums);
-
-        int[] result = new N0347().solution(nums, k);
-
-        DisplayUtil.display(result);
-    }
-
-
     /**
      * 解法1：全部排序，按顺序取前k个即可。但此时为O(nLogn)，而题目要求优于此复杂度。
      *
@@ -35,27 +24,9 @@ public class N0347 {
      *
      * 解法3：排序用桶排序。
      */
-    public int[] solution(int[] nums, int k) {
-        return sort(statistic(nums), k);
-    }
+    public int[] topKFrequent(int[] nums, int k) {
+        HashMap<Integer, Integer> map = statistic(nums);
 
-
-    //  key: 值，value：次数
-    private HashMap<Integer, Integer> statistic(int[] nums) {
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for (int num : nums) {
-            if (map.get(num) == null) {
-                map.put(num, 1);
-            } else {
-                map.put(num, map.get(num) + 1);
-            }
-        }
-
-        return map;
-    }
-
-    // 排序，并返回
-    private int[] sort(HashMap<Integer, Integer> map, int k) {
         PriorityQueue<Integer> pq = new PriorityQueue<>(new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
@@ -77,5 +48,20 @@ public class N0347 {
             result[i] = pq.poll();
         }
         return result;
+    }
+
+
+    //  key: 值，value：次数
+    private HashMap<Integer, Integer> statistic(int[] nums) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            if (map.get(num) == null) {
+                map.put(num, 1);
+            } else {
+                map.put(num, map.get(num) + 1);
+            }
+        }
+
+        return map;
     }
 }

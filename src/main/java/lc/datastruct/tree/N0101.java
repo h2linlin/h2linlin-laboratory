@@ -151,10 +151,8 @@ public class N0101 {
         st.push(root.right);
         st.push(root.left);
 
-
         TreeNode curR = root.right;
         TreeNode curL = root.left;
-
 
         while (!st.isEmpty()) {
             curL = st.pop();
