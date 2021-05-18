@@ -5,11 +5,6 @@ package lc.datastruct.tree;
  * @Author h2linlin
  */
 public class N0105 {
-    /**
-     * 解法：递归法。和105思路类似。后序切中序，中序切后序。
-     *
-     * 优化：用下标标记，不再新建数组。
-     */
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         if (preorder == null || preorder.length == 0 || inorder == null || inorder.length == 0) {
             return null;
@@ -20,54 +15,54 @@ public class N0105 {
 
     private TreeNode buildSubTree(int[] preorder, int preorderStart, int preorderEnd,
                                   int[] inorder, int inorderStart, int inorderEnd) {
+        // 差值判断
+        if (inorderStart > inorderEnd || preorderStart > preorderEnd) {
+            return null;
+        }
+
+        // 前序遍历
+
         TreeNode midNode = new TreeNode();
-
-        // 1.切割中序数组
-        int divValue = preorder[preorderStart];
-        midNode.val = divValue;
-
-        // 1.1 叶子节点，直接返回
+        // 0.判断叶子节点
         if (preorderStart == preorderEnd) {
+            midNode.val = preorder[preorderStart];
             return midNode;
         }
 
-        // 1.2寻找切割点下标
+        // 1.中序切割：前序切中序
+        // 1.1查找切割点
+        int divValue = preorder[preorderStart];
         int divFlag = -1;
         for (int i = inorderStart; i <= inorderEnd; i++) {
-            if (divValue == inorder[i]) {
+            if (inorder[i] == divValue) {
                 divFlag = i;
+                break;
             }
         }
 
-        // 1.3 切割中序左数组
+        // 1.2 切割中序
         int leftInorderStart = inorderStart;
         int leftInorderEnd = divFlag - 1;
 
-        // 1.4 切割中序右数组
         int rightInorderStart = divFlag + 1;
         int rightInorderEnd = inorderEnd;
 
-        // 2.切割前序数组
-        // 2.1 切割前序左数组
+
+        // 2.前序切割
+        // 2.1 左子树
+        int leftInorderLen = leftInorderEnd - leftInorderStart + 1;
         int leftPreorderStart = preorderStart + 1;
-        int leftPreorderEnd = leftPreorderStart + (leftInorderEnd - leftInorderStart + 1);
+        int leftPreorderEnd = leftPreorderStart + leftInorderLen - 1;
 
-        // 2.2 切割前序右数组
-        int rightPreorderStart = leftPreorderEnd + 1;
+        // 2.2 右子树
+        int rightInorderLen = rightInorderEnd - rightInorderStart + 1;
         int rightPreorderEnd = preorderEnd;
+        int rightPreorderStart = rightPreorderEnd - rightInorderLen + 1;
 
-        // 3.整合结果返回
-        if (leftPreorderStart > leftPreorderEnd || leftInorderStart > leftInorderEnd) {
-            midNode.left = null;
-        } else {
-            midNode.left = buildSubTree(preorder, leftPreorderStart, leftPreorderEnd, inorder, leftInorderStart, leftInorderEnd);
-        }
-
-        if (rightPreorderStart > rightPreorderEnd || rightInorderStart > rightInorderEnd) {
-            midNode.right = null;
-        } else {
-            midNode.right = buildSubTree(preorder, rightPreorderStart, rightPreorderEnd, inorder, rightInorderStart, rightInorderEnd);
-        }
+        // 3.合并左右子节点返回
+        midNode.val = divValue;
+        midNode.left = buildSubTree(preorder, leftPreorderStart, leftPreorderEnd, inorder, leftInorderStart, leftInorderEnd);
+        midNode.right = buildSubTree(preorder, rightPreorderStart, rightPreorderEnd, inorder, rightInorderStart, rightInorderEnd);
 
         return midNode;
     }
