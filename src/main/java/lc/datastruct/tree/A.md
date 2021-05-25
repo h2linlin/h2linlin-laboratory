@@ -71,6 +71,45 @@ class TreeNode {
 
 二叉搜索树：节点是有序的。使用迭代法时，不需要用栈模拟递归。二叉搜索树遍历时也不用回溯，因为节点的有序性已经可以决定我们走的方向了。
 
+map集合处理：
+- 是否可为null：Key：除了HashMap，其他所有Map都不允许Key为null(如treeMap)。value：线程安全的Map都不允许Value为null（Hashtable，ConcurrentHashMap不可为null）。
+- 遍历value：map.values()
+```java
+    for (Integer value : map.values()) {
+     // ...
+    }
+```
+- 遍历key：map.keySet()
+```java
+    for (Integer value : map.keySet()) {
+     // ...
+    }
+```
+- 遍历entry：map.entrySet()
+```java
+    for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+     // ...
+    }
+```
+- List转换为Array: list.toArray(new String[]);
+```java
+// 示例1
+ArrayList<String> list=new ArrayList<String>();
+String[] strings = new String[list.size()];
+list.toArray(strings);
+```
+- 数组转成List: Arrays.asList(String[] s);
+```java
+// 示例1
+String[] s = {"a","b","c"};
+List list = java.util.Arrays.asList(s);
+// 示例2
+List<Integer> results = new ArrayList<>();
+Integer[] temp = new Integer[results.size()];
+results.toArray(temp);
+```
+
+
 
 
 
