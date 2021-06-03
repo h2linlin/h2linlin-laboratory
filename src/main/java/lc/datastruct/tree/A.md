@@ -98,7 +98,7 @@ ArrayList<String> list=new ArrayList<String>();
 String[] strings = new String[list.size()];
 list.toArray(strings);
 ```
-- 数组转成List: Arrays.asList(String[] s);
+- Array转换为List: Arrays.asList(String[] s);
 ```java
 // 示例1
 String[] s = {"a","b","c"};
@@ -108,6 +108,11 @@ List<Integer> results = new ArrayList<>();
 Integer[] temp = new Integer[results.size()];
 results.toArray(temp);
 ```
+- Array排序：Arrays.sort(candidates);
+
+- List排序：Collections.sort(list);
+
+- List移除元素：list.remove(index);
 
 
 
