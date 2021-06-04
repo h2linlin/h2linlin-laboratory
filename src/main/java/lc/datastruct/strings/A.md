@@ -23,5 +23,27 @@ StringBuffer和StringBuilder区别：
 - StringBuffer：速度慢，线程安全
 - StringBuilder：速度快，线程不安全
 
-新建字符串，注意最后一个参数是长度，而不是结束标记位
+string -> char[]：如果String不熟悉，可以转换为Array来执行
+```java
+    str.toCharArray();
+```
+
+char -> string：新建字符串，注意最后一个参数是长度，而不是结束标记位
 String s = new String(char[] chars, int startIndex, int length);
+// 或
+String s = String(char value[]);
+
+分割子字符串，endIndex下标是不包括的：
+```java
+System.out.println("abc".substring(1,2));   // 返回下标 start 到 (end -1)。结果：b
+```
+
+拼接字符串：
+```java
+
+String.join(".", sunIpList)
+// [192,14,11,11] -> 192.14.11.11
+```
+
+
+
