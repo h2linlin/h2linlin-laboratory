@@ -45,5 +45,129 @@ String.join(".", sunIpList)
 // [192,14,11,11] -> 192.14.11.11
 ```
 
+字符串List排序：
+- list的对象实现Comparable<>接口
+- 直接用匿名排序来排：
+  - Collections.sort(list, new Comparator<User>() { public int compare(User u1, User u2) {}});
+
+Comparator接口可以实现自定义排序，实现Comparator接口时，要重写compare方法：
+
+int compare(Object o1, Object o2) 返回一个基本类型的整型
+
+- **如果按升序排序：此时如果 o1 小于 o2，应该返回-1（负数）**。相等返回0，o1大于o2返回1（正数）
+
+- **如果按降序排序：此时如果 o1 小于 o2，应该返回1（正数）**，相等返回0，01大于02返回-1（负数）
+
+```java
+// list进行排序的几种方式
+
+// 1、先来个简单的，上代码
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+public class sort {
+　　public static void main(String[] args) {
+　　List<Integer> list = new ArrayList<Integer>();
+　　list.add(new Integer(5));
+　　list.add(new Integer(13));
+　　list.add(new Integer(4));
+　　list.add(new Integer(9));
+　　Collections.sort(list);
+　　System.out.println(list.toString());
+　　}
+}
+
+// 程序运行结果：
+
+// [4, 5, 9, 13]，这种简单的排序直接按照自然顺序进行升序排列。
+
+// 2、list参数类型相对复杂的排序
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+public class sort {
+　　public static void main(String[] args) {
+　　List<User> list = new ArrayList<User>();
+　　list.add(new User("张三", 5));
+　　list.add(new User("李四", 30));
+　　list.add(new User("王五", 19));
+　　list.add(new User("陈十七", 17)); // 陈十七永远十七岁
+　　Collections.sort(list); // 按年龄排序
+　　System.out.println(list.toString());
+　　}
+}
+
+
+class User implements Comparable<User>{
+
+　　private String name; //姓名
+
+　　private int age; // 年龄
+
+
+　　public User(String name, int age) {
+　　　　this.name = name;
+　　　　this.age = age;
+　　}
+
+　　// getter && setter
+　　public String getName() {
+　　　　return name;
+　　}
+　　public void setName(String name) {
+　　　　this.name = name;
+　　}
+　　public int getAge() {
+　　　　return age;
+　　}
+　　public void setAge(int age) {
+　　this.age = age;
+　　}
+　　@Override
+　　public String toString() {
+　　　　return "User [name=" + name + ", age=" + age + "]";
+　　}
+
+　　@Override
+　　public int compareTo(User user) {           //重写Comparable接口的compareTo方法，
+　　　　return this.age - user.getAge();　　// 根据年龄升序排列，降序修改相减顺序即可
+　　}
+}
+
+// 程序运行结果：根据年龄升序排列
+
+// [User [name=张三, age=5], User [name=陈十七, age=17], User [name=王五, age=19], User [name=李四, age=30]]
+
+3、匿名内部类实现排序
+
+public class sort {
+　　public static void main(String[] args) {
+　　List<User> list = new ArrayList<User>();
+　　list.add(new User("张三", 5));
+　　list.add(new User("李四", 30));
+　　list.add(new User("王五", 19));
+　　list.add(new User("陈十七", 17)); // 陈十七永远十七岁
+　　Collections.sort(list, new Comparator<User>() {
+　　　　@Override
+　　　　public int compare(User u1, User u2) {
+　　　　　　int diff = u1.getAge() - u2.getAge();
+　　　　　　if (diff > 0) {
+　　　　　　　　return 1;
+　　　　　　}else if (diff < 0) {
+　　　　　　　　return -1;
+　　　　　　}
+　　　　　　return 0; //相等为0
+　　　　}
+　　}); // 按年龄排序
+　　System.out.println(list.toString());
+　　}
+}
+
+// 运行结果：[User [name=张三, age=5], User [name=陈十七, age=17], User [name=王五, age=19], User [name=李四, age=30]]
+
+```
+
 
 

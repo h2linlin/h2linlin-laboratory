@@ -104,3 +104,13 @@ void backtracking(参数) {
   
 「一般说到回溯算法的复杂度，都说是指数级别的时间复杂度，这也算是一个概括吧！」
 
+char和int转换：
+```java
+// '1' -> 1
+char c9 = '1';
+int num9 = c9 - '0';
+
+// 1 -> '1'
+int num10 = 1;
+char c10 = (char)(num10 + '0');
+```
