@@ -23,7 +23,7 @@ public class N0000 {
      *      2.不装：不需要给i留空间，也不需要增加i的价值。dp[i][j] = dp[i-1][j]
      *      3.以上两种取最大值即可。即 dp[i][j] = max(dp[i-1][j], dp[i-1][j-weight[i]] + value[i])
      */
-    private static void test2WeiBagProblem1() {
+    private static void test2WeiBagProblem() {
         // 物品重量
         int[] weight = {1, 3, 4};
         // 物品价值
@@ -58,14 +58,39 @@ public class N0000 {
     }
 
     /**
-     * 滚动数组方式，是对上述二维数组方式的简化
+     * 一维滚动数组方式，是对上述二维数组方式的简化。相当于把上一层的数据直接copy到本层，复用了空间，所以减少了一个维度。
      */
-    private static void test1WeiBagProblem1() {
+    private static void test1WeiBagProblem() {
+        // 物品重量
+        int[] weight = {1, 3, 4};
+        // 物品价值
+        int[] value = {15, 20, 30};
+        // 背包容量
+        int bagWeight = 4;
 
+        // 1.dp数组
+        int[] dp = new int[bagWeight + 1];
+
+        // 2.初始化
+        // 2.1 物品纬度方向初始化
+        for (int j = 0; j < dp.length; j++) {
+            dp[j] = 0;
+        }
+        // 2.2 容量纬度方向初始化，无需
+
+        // 3.递推遍历
+        for (int i = 0; i < weight.length; i++) {
+            for (int j = bagWeight; j >= weight[i]; j--) {
+                dp[j] = Math.max(dp[j], dp[j - weight [i]] + value[i]);
+            }
+        }
+
+        // 4.输出结果
+        DisplayUtil.display(dp);
     }
 
     public static void main(String[] args) {
-        test2WeiBagProblem1();
+        test1WeiBagProblem();
     }
 
 }
