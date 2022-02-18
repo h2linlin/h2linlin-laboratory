@@ -35,4 +35,29 @@ public class N0062 {
 
         return dp[m-1][n-1];
     }
+
+    /**
+     * 一维数组写法
+     */
+    public int uniquePaths2(int m, int n) {
+        // 1.dp数组含义：机器人到该点的路径总数
+
+        // 2.递推公式：dp[n] = dp[n-1] + dp[n];
+
+        // 3.初始化
+        int[] dp = new int[n];
+        for (int i = 0; i < n; i++) {
+            dp[i] = 1;
+        }
+
+        // 4.遍历
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                dp[j] = dp[j-1] + dp[j];
+            }
+        }
+        return dp[n-1];
+
+        // 5.举例验证
+    }
 }
