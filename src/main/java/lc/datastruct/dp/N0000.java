@@ -90,7 +90,78 @@ public class N0000 {
     }
 
     public static void main(String[] args) {
-        test1WeiBagProblem();
+        test1WeiBagProblem2();
     }
 
+    /**
+     * 第2次写：二维数组方式
+     */
+    private static void test2WeiBagProblem2() {
+        // 物品重量
+        int[] weight = {1, 3, 4};
+        // 物品价值
+        int[] value = {15, 20, 30};
+        // 背包容量
+        int bagWeight = 4;
+
+        // 1.含义：dp[i][j]，从编号为第0-i的物品中选择，背包容量为j时，物品的最大总价值。
+        // 2.公式：dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j-weight[i] + value[i]])
+        // 3.初始化：这里背包容量数组多了一个1，因为要考虑容量为0的情况。不过省略好像也没事。
+        int[][] dp = new int[weight.length][bagWeight + 1];
+
+        // 3.1 背包容量为0，其实这一步可以省略，因为数组默认全部为0。
+        for (int i = 0; i < weight.length; i++) {
+            dp[i][0] = 0;
+        }
+        // 3.2 物品初始化
+        for (int j = weight[0]; j <= bagWeight; j++) {
+                 dp[0][j] = value[0];
+        }
+        // 4.遍历
+        for (int i = 1; i < weight.length; i++) {
+            for (int j = 1; j <= bagWeight; j++) {
+                if (j < weight[i]) {
+                    dp[i][j] = dp[i-1][j];
+                } else {
+                    dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j-weight[i]] + value[i]);
+                }
+            }
+        }
+
+        // 5.检查
+        DisplayUtil.display(dp);
+    }
+
+    /**
+     * 第2次写：一维数组方式
+     */
+    private static void test1WeiBagProblem2() {
+        // 物品重量
+        int[] weight = {1, 3, 4};
+        // 物品价值
+        int[] value = {15, 20, 30};
+        // 背包容量
+        int bagWeight = 4;
+
+        // 1.定义：dp[j]：背包容量为j时，能够装入的最大物品价值总和
+        // 2.公式：dp[j] = Math.max(dp[j-weight[i]] + value[i], dp[j])
+        // 3.初始化：
+        int[] dp = new int[bagWeight + 1];
+        for (int j = 0; j <= bagWeight; j++) {
+            if (j < weight[0]) {
+                dp[j] = 0;
+            } else {
+                dp[j] = value[0];
+            }
+        }
+        // 4.遍历顺序：外层为物品编号。内层为背包容量
+        for (int i = 1; i < weight.length; i++) {
+            for (int j = bagWeight; j > weight[i]; j--) {
+                dp[j] = Math.max(dp[j], dp[j - weight[i]] + value[i]);
+            }
+        }
+
+        // 5.检查
+        DisplayUtil.display(dp);
+    }
 }
