@@ -72,4 +72,24 @@ public class N0070 {
         // 5.举例对比
     }
 
+    /**
+     * 题目扩展改动：一步一个台阶，两个台阶，三个台阶，.......，直到 m个台阶。问有多少种不同的方法可以爬到楼顶呢？
+     * 此时是一个完全背包.
+     * 一下解没有经过验证
+     */
+    public int climbStairsEx(int n) {
+        // 1.dp[j]：从0-i的楼梯中选，爬到楼顶有dp[j]中方法
+        // 2.公式：dp[j] = dp[j] + dp[j - num[i]]
+        // 3.初始化
+        int[] dp = new int[n + 1];
+        dp[0] = 1;
+        // 4.递推
+        for (int j = 1; j <= n; j++) {
+            for (int i = 1; i <= j; i++) {
+                    dp[j] = dp[j] + dp[j - i];
+            }
+        }
+        return dp[n];
+    }
+
 }
