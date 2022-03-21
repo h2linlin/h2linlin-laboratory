@@ -5,9 +5,9 @@ package lc.datastruct.tree;
  * @Author h2linlin
  */
 public class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
 
     public TreeNode() {}
     public TreeNode(Integer val) { this.val = val; }
