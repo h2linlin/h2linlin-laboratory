@@ -23,6 +23,11 @@ offer:提供
 poll: pull?
 peek：偷看
 
+强烈建议：
+- **入队出队用add/remove First/Last，好记**
+- **查看用peek，因为其他查看为null时会报错。**
+- **peek查出来的值，如果为空，注意自动装包后会报错：characterObj == null，底层时调用characterObj.valueOf方法**
+
 **作为双端队列使用**，后面跟First或Last：
 - 返回boolean的出入队：offer/poll
 - 返回boolean的查看：  peek。注意：dequeue为空时，dequeue.peek()会抛空指针错误！这里不准确。源代码里不会报错，但是实际操作下来报错了！
