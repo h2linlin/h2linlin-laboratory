@@ -23,7 +23,7 @@ offer:提供
 poll: pull?
 peek：偷看
 
-强烈建议：
+**强烈建议：**
 - **入队出队用add/remove First/Last，好记**
 - **查看用peek，因为其他查看为null时会报错。**
 - **peek查出来的值，如果为空，注意自动装包后会报错：characterObj == null，底层时调用characterObj.valueOf方法**
