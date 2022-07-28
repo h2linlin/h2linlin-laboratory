@@ -1,6 +1,6 @@
 package lc.codingcarl.sort;
 
-public class N0704 {
+public class N0704Search {
     /**
      * 二分查找
      */

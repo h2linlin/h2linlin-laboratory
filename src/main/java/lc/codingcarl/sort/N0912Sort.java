@@ -3,7 +3,7 @@ package lc.codingcarl.sort;
 import lc.DisplayUtil;
 
 // 排序：给你一个整数数组 nums，请你将该数组升序排列。
-public class N0912 {
+public class N0912Sort {
 
 /*    public int[] sortArray(int[] nums) {
         // 边界处理

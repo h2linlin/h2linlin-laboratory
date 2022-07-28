@@ -25,7 +25,9 @@ StringBuffer和StringBuilder区别：
 
 string -> char[]：如果String不熟悉，可以转换为Array来执行
 ```java
-    str.toCharArray();
+    "ss".length();  // 长度
+    "ss".charAt(0); // 取下标处值
+    "ss".toCharArray(); // 转换为数组
 ```
 
 char -> string：新建字符串，注意最后一个参数是长度，而不是结束标记位
