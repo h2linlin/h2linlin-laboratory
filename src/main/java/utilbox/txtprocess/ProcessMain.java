@@ -7,7 +7,13 @@ import java.io.IOException;
  */
 public class ProcessMain {
     public static void main(String[] args) throws IOException {
-        qingTingJsonProcessor();
+//        qingTingJsonProcessor();
+
+        String wordEx = "0:set/1:i/s:settings";
+        // 提取原型。原型处于 0: 和 / 之间
+        String w1 = wordEx.split("0:")[1];
+        if (w1 != null && w1 != "") { w1 = w1.split("/")[0];}
+        System.out.println(w1);
     }
 
     // QQ空间日志评论内容处理
